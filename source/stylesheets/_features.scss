@@ -4,15 +4,30 @@
     margin: 15rem 0;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    // auto-fit creates as many tracks as can fit based on the width defined
+    // width of the tracks should always stay between 25rem and 1fr
+    // this way the columns per row automatically change depending on the width
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     grid-gap: 6rem;
+    align-items: start;
 }
 
 .feature {
+
+    display: grid;
+    // min-content because if we want to change the width of the icon, the column would automatically adapt
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
     &__icon {
         fill: $color-primary;
         width: 4.5rem;
         height: 4.5rem;
+        // 1 / -1 only works if you have an explicit grid
+        grid-row: 1 / span 2;
+
+        transform: translateY(-1rem);
 
     }
 
