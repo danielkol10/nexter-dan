@@ -9,10 +9,20 @@
     padding-top: 4rem;
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
     grid-row-gap: 1.5rem;
     justify-content: center;
+
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5.5rem;
+    }
+
 
     &__logo {
         height: 3rem;
@@ -22,6 +32,10 @@
     &__btn {
         align-self: start;
         justify-self: start;
+
+        @media only screen and (max-width: $bp-small) {
+            margin-top: 1rem;
+        }
     }
 
     &__seen-on-text {
@@ -29,6 +43,7 @@
         grid-template-columns: 1fr max-content 1fr;
         grid-column-gap: 1.5rem;
         align-items: center;
+        user-select: none;
 
         font-size: 1.7rem;
         font-weight: 600;
@@ -50,9 +65,11 @@
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 3rem;
         justify-items: center;
+        align-items: center;
 
         img {
-            height: 3rem;
+            max-height: 2.5rem;
+            max-width: 100%;
             filter: brightness(70%);
 
             &:hover {
